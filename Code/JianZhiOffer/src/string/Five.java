@@ -11,9 +11,17 @@ package string;
  *      使用两个指针，分别指向原来字符串的末尾、新字符串的末尾。
  *      然后不断的向前移动，并复制到后面去，遇到空格则向后面写入%20
  *      直到两个指针指向同一个位置时，替换成功
+ *
+ * 相关题目：合并数组
+ *      有两个有序的数组A1和A2，A1末尾有足够空间容纳A2。
+ *      实现一个函数将A2的所有数字插入到A1中，并且所有数字是有序的。
+ *
+ * 较好的解法：
+ *      和上面一题是类似的，通过指针进行
  */
 public class Five {
     public static void main(String[] args) {
+        //测试替换空格算法
         char[] str = new char[30];
         str[0] = 'W';
         str[1] = 'e';
@@ -28,6 +36,20 @@ public class Five {
         str[10] = 'p';
         str[11] = 'y';
         System.out.println(findBlank(str, 11));
+
+        //测试合并数组算法
+        int[] target = {1, 2, 3, 4, 5, 6, 7};
+        int[] source = new int[14];
+        source[0] = 1;
+        source[1] = 2;
+        source[2] = 3;
+        source[3] = 4;
+        source[4] = 6;
+        source[5] = 7;
+        source[6] = 9;
+        for (int i : mergeArray(target, source, target.length, 7)) {
+            System.out.println(i);
+        }
     }
 
     /**
@@ -68,5 +90,36 @@ public class Five {
             }
         }
         return str;
+    }
+
+    /**
+     *  有两个有序的数组A1和A2，A1末尾有足够空间容纳A2。
+     *  实现一个函数将A2的所有数字插入到A1中，并且所有数字是有序的。
+     *
+     *  有点问题···
+     * @param target 要进行合并的数组
+     * @param source 原来的数组，大小足够容纳target数组
+     * @param targetUsedLength
+     * @param sourceUsedLength
+     * @return
+     */
+    private static int[] mergeArray(int[] target, int[] source, int targetUsedLength, int sourceUsedLength) {
+        //鲁棒性
+        if(target == null || source == null || targetUsedLength == 0 || sourceUsedLength == 0) {
+            return null;
+        }
+
+        //算法
+        int sourcePoint = sourceUsedLength - 1;
+        int sourceLastPoint = source.length - 1;
+        int targetPoint = targetUsedLength - 1;
+        while (sourcePoint >= 0 && sourceLastPoint - 1 != sourcePoint) {
+            if (target[targetPoint] > source[sourcePoint]) {
+                source[sourceLastPoint--] = target[targetPoint--];
+            } else {
+                source[sourceLastPoint--] = source[sourcePoint--];
+            }
+        }
+        return source;
     }
 }
