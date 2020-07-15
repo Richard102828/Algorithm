@@ -69,14 +69,11 @@ public class Seven {
         if (pre == null || in == null) {
             return null;
         }
-        if (preStart == preEnd || inStart == inEnd) {
-            return null;
-        }
 
         //算法
         TreeNode root = new TreeNode(pre[0]);
         //对叶子节点进行处理
-        if (preStart == preEnd && inStart == inEnd) {
+        if (preStart == preEnd || inStart == inEnd) {
             return root;
         }
 
