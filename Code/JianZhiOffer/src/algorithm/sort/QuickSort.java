@@ -6,7 +6,8 @@ import java.util.Arrays;
  * 快速排序的实现
  */
 public class QuickSort {
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
         int[] a = {1, 3, 9, 0};
         System.out.println(Arrays.toString(a));
         quickSort(a, 0, a.length - 1);
