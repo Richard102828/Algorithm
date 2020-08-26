@@ -29,3 +29,9 @@
       ```
    
 6. 对于字符串的一些操作，可以转为`StringBuilder`来实现，比如删除一个字符等
+
+7. 字符串转为字符数组
+
+   1. ```
+      char[] chars = str.toCharArray();
+      ```
