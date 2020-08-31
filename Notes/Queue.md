@@ -10,5 +10,9 @@
    Queue<TreeNode> queue = new LinkedList<>();	//使用向上转型
    ```
 
-   
+4. 双端队列（`Deque`）支持再两端插入数据，而普通的队列`Queue`只能再尾部插入
+
+   1. ```
+      Deque<Integer> deque = new LinkedList<Integer>();
+      ```
 
