@@ -1,6 +1,6 @@
 package other;
 
-求1+2+3+...+n,要求不能使用乘除法、for、while、if、else、switch、case等关键词以及三元运算符等。
+
 public class NinTeen {
     public static void main(String[] args) {
         System.out.println(match(new char[] {'a', 'a', 'a'},
