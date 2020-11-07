@@ -15,19 +15,24 @@ public class FiftyFour {
         TreeNode right;
     }
 
-    private TreeNode getKthNode(TreeNode node, int k) {
-        //鲁棒性
-        if (node == null)
-            return null;
-        if (node.left != null) {
-            getKthNode(node.left, k);
+    class Solution {
+        int k = 0;
+        int res = 0;
+        public int kthLargest(TreeNode root, int k) {
+            if (root == null || k < 1)
+                return -1;
+            this.k = k;
+            core(root);
+            return res;
         }
-        k--;
-        if (node.right != null) {
-            getKthNode(node.right, k);
+
+        public void core(TreeNode root) {
+            if (root == null)
+                return;
+            core(root.right);
+            if (--this.k == 0)
+                res = root.value;
+            core(root.left);
         }
-        if (k == 0)
-            return node;
-        return null;
     }
 }

@@ -15,8 +15,8 @@ import java.util.LinkedList;
  * 相关题目：使用两个队列实现一个栈
  * 我的解法：
  *      1. 两个队列都是先进先出的，所以栈顶的元素就在队列末尾
- *          a. push操作：第一次选一个队列入队，后面的就向不为空的队列入队
- *          b. pop操作：先向另外一个空队列转移元素（只剩队列尾部一个），然后将这个出队即可
+ *          a. add操作：第一次选一个队列入队，后面的就向不为空的队列入队
+ *          b. poll操作：先向另外一个空队列转移元素（只剩队列尾部一个），然后将这个出队即可
  */
 public class Nine {
 
@@ -32,7 +32,7 @@ public class Nine {
          * 先转移元素，再进行删除
          */
         void deleteHead() {
-            if (outStack.size() <= 0) {
+            if (outStack.size() == 0) {
                 while (inStack.size() != 0) {
                     outStack.push(inStack.pop());
                 }

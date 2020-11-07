@@ -32,7 +32,7 @@ public class Four {
         int row = 0;
         int column = array[0].length - 1;
         if (column >= 0) {
-            while (column >= 0 &&  row < array.length) {
+            while (column >= 0 && row < array.length) {
                 if (target == array[row][column]) {
                     isFind = true;
                     break;

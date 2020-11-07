@@ -26,7 +26,6 @@ public class ThirtyFour {
     public static void main(String[] args) {
 
     }
-
     /**
      * 规定整数大于0
      * @param node

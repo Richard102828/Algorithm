@@ -52,4 +52,25 @@ public class Eight {
         }
         return nextNode;
     }
+
+    /**
+     * 第二次做题——测试
+     */
+    private static TreeNode nextNode(TreeNode node) {
+        if (node == null)
+            return null;
+        //右节点是否为空
+        TreeNode cur = node;
+        if (cur.right != null) {
+            cur = cur.right;
+            //右子树的左子树是否为空
+            while (cur.left != null)
+                cur = cur.left;
+        } else {
+            //向上找父节点，该节点为父节点的右子树，则继续往上找，直到不为右子树
+            while (cur.parent != null && cur.parent.left != cur)
+                cur = cur.parent;
+        }
+        return cur;
+    }
 }

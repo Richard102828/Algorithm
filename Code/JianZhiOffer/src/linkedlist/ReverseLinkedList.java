@@ -15,6 +15,8 @@ import java.util.Stack;
  *              使反转能够继续进行下去
  *              ii. 而我们在反转之后还要将节点连接起来，但是我们指针因为要进行下一次反转移到了后面去了，前面的节点就丢失了，
  *              所以要使用一个指针来保存前面的节点，用来连接链表
+ *      2. 预设节点 + 三指针
+ *      3. 递归
  */
 public class ReverseLinkedList {
     static class Node {
@@ -47,5 +49,33 @@ public class ReverseLinkedList {
             next = nextNext.next;
         }
         return next;
+    }
+}
+
+
+class ListNode {
+    int val;
+    ListNode next;
+    ListNode() {}
+    ListNode(int val) { this.val = val; }
+    ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+}
+class Solution {
+    public ListNode swapPairs(ListNode head) {
+        if (head == null || head.next == null)
+            return head;
+        ListNode preNode = new ListNode();
+        preNode.next = head;
+        ListNode temp = preNode;
+        while (temp.next != null && temp.next.next != null) {
+            ListNode cur1 = temp.next;
+            ListNode cur2 = temp.next.next;
+            temp.next = cur2;
+            cur1.next = cur2.next;
+            cur2.next = cur1;
+            //注意这里，是移到cur1的位置，而不是cur2，因为此时它们已经交换了位置了
+            temp = cur1;
+        }
+        return preNode.next;
     }
 }
